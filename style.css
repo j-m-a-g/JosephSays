@@ -1,0 +1,228 @@
+body {
+  font-family: Sans-Serif;
+  background-color: Crimson;
+  color: White;
+}
+
+footer {
+  margin-top: 25px;
+  font-family: Monospace;
+}
+
+a {
+  color: Orange;
+}
+
+h1 {
+  text-align: Center;
+  font-family: Monospace;
+  font-size: 3em;
+}
+
+h2,
+h3 {
+  text-align: Center;
+}
+
+button {
+  font-family: Monospace;
+  font-weight: Bold;
+  color: White;
+  border-style: Solid;
+  background-color: OrangeRed;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: Auto;
+  margin-right: Auto;
+  box-shadow: 5px 5px Black;
+}
+button:Hover {
+  animation-name: buttonBackgroundFade;
+  animation-duration: 0.12s;
+  animation-fill-mode: forwards;
+}
+
+input {
+  margin-left: Auto;
+  margin-right: Auto;
+  text-align: Center;
+  color: White;
+  border-style: Solid;
+  border-width: 2px;
+  border-color: White;
+  background-color: Crimson;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+input:Hover {
+  animation-name: inputHoverFade;
+  animation-duration: 0.12s;
+  animation-fill-mode: forwards;
+}
+input:Focus {
+  background-color: OrangeRed;
+}
+input::Placeholder {
+  text-align: Center;
+  font-family: Monospace;
+  color: White;
+}
+
+img {
+  width: 20%;
+  height: 20%;
+}
+
+hr {
+  border-width: 3px;
+  border-style: Solid;
+  border-color: White;
+}
+
+.invertedButtonScheme {
+  font-family: Monospace;
+  font-weight: Bold;
+  color: White;
+  border-style: Solid;
+  background-color: Black;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: Auto;
+  margin-right: Auto;
+  box-shadow: 5px 5px OrangeRed;
+}
+
+.landingContent {
+  margin-top: 75px;
+}
+
+.alteredTitle {
+  text-shadow: 5px 5px Black;
+  margin-top: -10px;
+  text-align: Center;
+  margin-left: 20px;
+  font-family: Sans-Serif;
+  animation-name: swivelAnimation;
+  animation-duration: 4s;
+  transform: Rotate(-5deg);
+}
+
+.textInput {
+  width: 25%;
+  padding: 20px;
+  margin-left: Auto;
+  margin-right: Auto;
+}
+
+.onTopOfAnother {
+  display: Block;
+}
+
+.sideBySide {
+  display: Flex;
+}
+
+.descriptionText {
+  line-height: 150%;
+}
+
+.numericalInputs {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 75px;
+  width: 125px;
+  height: 175px;
+}
+
+.formImageButton {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 50px;
+  height: 50px;
+  background-color: White;
+  border-style: None;
+  border-radius: 0px;
+  box-shadow: None;
+}
+.formImageButton:Hover {
+  background-color: Yellow;
+  animation: None;
+}
+
+.formImageButtonFilled {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 50px;
+  height: 50px;
+  background-color: Orange;
+  border-style: Solid;
+  border-radius: 0px;
+  border-style: None;
+  box-shadow: None;
+}
+.formImageButtonFilled:Hover {
+  background-color: Yellow;
+  animation: None;
+}
+
+#introductionText {
+  margin-bottom: 30px;
+}
+
+#remainingTimeText {
+  font-family: Monospace;
+  text-align: Left;
+}
+
+#moveMouseBar {
+  width: 80%;
+}
+
+#cheeseForMouse {
+  width: 100px;
+  height: 75px;
+  position: absolute;
+}
+
+#greenArrow {
+  margin-left: 900px;
+  transform: Rotate(90deg);
+  width: 50px;
+  height: 50px;
+}
+
+#josephSaysTitle {
+  margin-bottom: -50px;
+}
+
+/* Swivels the landing title on the page */
+@keyframes swivelAnimation {
+  0% {
+    transform: Rotate(-5deg);
+  }
+  25% {
+    transform: Rotate(5deg);
+  }
+  50% {
+    transform: Rotate(-5deg);
+  }
+  75% {
+    transform: Rotate(5deg);
+  }
+  100% {
+    transform: Rotate(-5deg);
+  }
+}
+
+@keyframes buttonBackgroundFade {
+  to {
+    color: Black;
+    background-color: Orange;
+  }
+}
+
+@keyframes inputHoverFade {
+  to {
+    background-color: OrangeRed;
+  }
+}

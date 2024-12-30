@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Joseph Says</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/speechBubble.png">
+</head>
+
+<body>
+  <div class="landingContent" id="welcomeScreen">
+    <h1>Welcome to</h1>
+    <h1 class="alteredTitle">💬 Joseph Says</h1>
+    <h3>
+      A game where following instructions is the only advice you'll
+      need
+    </h3>
+    <input
+      id="playerName"
+      onchange="updatePlayButtonText()"
+      placeholder="What's your name?"
+      type="text"
+      class="textInput onTopOfAnother">
+    <button
+      id="playButton"
+      class="onTopOfAnother"
+      onclick="hideAndShow('welcomeScreen', 'gameOverview'); document.getElementById('webpageInfo').hidden = true">
+      Let's Play!
+    </button>
+  </div>
+
+  <div class="landingContent" id="gameOverview" hidden>
+    <h1>Before We Start</h1>
+    <h2 class="descriptionText" id="introductionText">You might be thinking that this is just a spin-off of Simon Says...</h2>
+    <div class="sideBySide">
+      <button
+        id="noChoiceButContinue"
+        class="invertedButtonScheme" hidden
+        onclick="initializeGetReadyCountdown()">
+        I guess I have no choice...
+      </button>
+      <button
+        id="continueToPlay"
+        onclick="flipThroughIntro()">
+        Continue
+      </button>
+    </div>
+    
+  </div>
+
+  <div class="landingContent" id="getReadyCountdown" hidden>
+    <h1 id="getReadyText">Get Ready in</h1>
+    <h1
+      class="alteredTitle"
+      style="font-size: 4em"
+      id="getReadyCounter">
+      4
+    </h1>
+  </div>
+
+  <div id="mainGameplay" hidden>
+    <h2 id="remainingTimeText">Time left (seconds): 35</h2>
+    <h1 id="josephSaysTitle">Joseph Says... </h1>
+    <div class="landingContent" id="selectNumFromRange">
+      <h2>Click <u>Increase</u> to pick a number from 1 to 10</h2>
+      <input
+        class="numericalInputs onTopOfAnother"
+        id="fromOneToTenInput"
+        type="number"
+        min="1" readonly>
+      <div class="sideBySide">
+        <button
+          class="onTopOfAnother invertedButtonScheme"
+          onclick="incrementDecrementNum()">
+          Increase
+        </button>
+        <button
+          id="nextForSelectNumFromRange"
+          class="onTopOfAnother"
+          onclick="determineNextTaskFromRange()">
+          Next
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Shown when the player selects a number less than or
+      equal to 2 from out of 10 -->
+    <div class="landingContent" id="mouseToCheese" hidden>
+      <h2>Use the <u>bar</u> below to move the mouse to its cheese</h2>
+      <div class="sideBySide">
+        <img id="computerMouseGraphic" src="images/computerMouse.png">
+        <img
+          style="margin-left: 783px; margin-top: 15px"
+          id="cheeseForMouse"
+          src="images/cheese.png">
+      </div>
+
+      <input
+        onchange="modifyComputerMousePosition()"
+        value="0"
+        max="650"
+        class="onTopOfAnother"
+        id="moveMouseBar"
+        type="range">
+    </div>
+
+    <!-- Shown when the player selects a number less than or
+      equal to 4 from out of 10 -->
+    <div class="landingContent" id="solveMathProblem" hidden>
+      <h2>Enter the number <u>12</u> in the <u>Input</u> below</h2>
+        <h1 style="font-size: 75px">
+          3(<input
+          onchange="checkMathProblemAnswer()"
+          style="margin-left: 10px"
+          class="numericalInputs"
+          id="playerInputMathProblem"
+          type="number"
+          value="0">)
+           + 1 = 37
+        </h1>
+
+    </div>
+
+    <!-- Shown when the player selects a number less than or
+      equal to 6 from out of 10 -->
+    <div class="landingContent" id="landOnMiddle" hidden>
+      <h2>Press the <u>Stop</u> button when the green arrow reaches the middle</h2>
+      <img id="greenArrow" src="images/greenArrow.png">
+      <table style="width: 100%; margin-bottom: 20px">
+        <tr>
+          <td><hr></td>
+          <td>
+            <div style="background-color: Orange; height: 13px"></div>
+          </td>
+          <td><hr></td>
+        </tr>
+      </table>
+      <button
+          id="stopGreenArrowMove"
+          class="onTopOfAnother"
+          onclick="checkIfArrowOnMiddle()">
+          Stop
+      </button>
+    </div>
+    
+    <!-- Shown when the player selects a number less than or
+      equal to 8 from out of 10 -->
+    <div class="landingContent" id="formImageFromButtons" hidden>
+      <h2>Toggle all the buttons filled with <u>Orange</u> to create the image</h2>
+      
+      <div class="sideBySide">
+        <!-- Grid where user, "creates," the simple image -->
+        <table style="margin-left: Auto; margin-right: Auto">
+          <!-- 1st Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage1x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x1')"></button>
+              <button
+                id="formImage1x2"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x2')"></button>
+              <button
+                id="formImage1x3"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x3')"></button>
+              <button
+                id="formImage1x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x4')"></button>
+              <button
+                id="formImage1x5"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x5')"></button>
+              <button
+                id="formImage1x6"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x6')"></button>
+              <button
+                id="formImage1x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage1x7')"></button>
+            </td>
+          </tr>
+          <!-- 2nd Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage2x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage2x1')"></button>
+              <button
+                id="formImage2x2"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage2x2'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage2x3"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage2x3')"></button>
+              <button
+                id="formImage2x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage2x4')"></button>
+              <button
+                id="formImage2x5"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage2x5')"></button>
+              <button
+                id="formImage2x6"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage2x6'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage2x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage2x7')"></button>
+            </td>
+          </tr>
+          <!-- 3rd Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage3x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage3x1')"></button>
+              <button
+                id="formImage3x2"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage3x2')"></button>
+              <button
+                id="formImage3x3"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage3x3'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage3x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage3x4')"></button>
+              <button
+                id="formImage3x5"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage3x5'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage3x6"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage3x6')"></button>
+              <button
+                id="formImage3x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage3x7')"></button>
+            </td>
+          </tr>
+          <!-- 4th Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage4x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x1')"></button>
+              <button
+                id="formImage4x2"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x2')"></button>
+              <button
+                id="formImage4x3"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x3')"></button>
+              <button
+                id="formImage4x4"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage4x4'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage4x5"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x5')"></button>
+              <button
+                id="formImage4x6"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x6')"></button>
+              <button
+                id="formImage4x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage4x7')"></button>
+            </td>
+          </tr>
+          <!-- 5th Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage5x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage5x1')"></button>
+              <button
+                id="formImage5x2"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage5x2')"></button>
+              <button
+                id="formImage5x3"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage5x3'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage5x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage5x4')"></button>
+              <button
+                id="formImage5x5"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage5x5'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage5x6"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage5x6')"></button>
+              <button
+                id="formImage5x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage5x7')"></button>
+            </td>
+          </tr>
+          <!-- 6th Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage6x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage6x1')"></button>
+              <button
+                id="formImage6x2"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage6x2'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage6x3"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage6x3')"></button>
+              <button
+                id="formImage6x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage6x4')"></button>
+              <button
+                id="formImage6x5"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage6x5')"></button>
+              <button
+                id="formImage6x6"
+                class="formImageButtonFilled"
+                onclick="toggleFormImageButtonStyle('formImage6x6'); formImageFromButtonsClickCount++"></button>
+              <button
+                id="formImage6x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage6x7')"></button>
+            </td>
+          </tr>
+          <!-- 7th Row -->
+          <tr>
+            <td>
+              <button
+                id="formImage7x1"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x1')"></button>
+              <button
+                id="formImage7x2"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x2')"></button>
+              <button
+                id="formImage7x3"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x3')"></button>
+              <button
+                id="formImage7x4"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x4')"></button>
+              <button
+                id="formImage7x5"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x5')"></button>
+              <button
+                id="formImage7x6"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x6')"></button>
+              <button
+                id="formImage7x7"
+                class="formImageButton"
+                onclick="toggleFormImageButtonStyle('formImage7x7')"></button>
+            </td>
+          </tr>
+        </table>
+        <button
+          style="margin-top: Auto; margin-bottom: Auto"
+          class="onTopOfAnother"
+          type="button"
+          onclick="verifyImageIsFormed()">
+          Check
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="landingContent" id="gameSuccessScreen" hidden>
+    <h1>Hooray!</h1>
+    <h1 class="alteredTitle" id="youWonText">You Made it [playerName]!</h1>
+    <h3 id="timeTakenForTasks">You went through all the tasks in [seconds]</h3>
+    <button
+      class="onTopOfAnother"
+      onclick="location.reload()">
+      Play Again?
+    </button>
+
+  </div>
+
+  <div class="landingContent" id="gameOverScreen" hidden>
+    <h1>Oh no</h1>
+    <h1 class="alteredTitle" id="youLostText">Game Over [playerName]!</h1>
+    <h3>You ran out of time!</h3>
+    <button
+      class="onTopOfAnother"
+      onclick="location.reload()">
+      Play Again?
+    </button>
+
+  </div>
+
+  <!-- Ensures that all HTML DOM elements initially load prior to
+    executing the script -->
+  <script src="main.js"></script>
+</body>
+
+<footer id="webpageInfo">
+  Designed and Developed by 
+  <span style="font-family: Sans-Serif; font-size: 12px; font-weight: Bold;">
+    JMag | <a href="https://github.com/j-m-a-g">@j-m-a-g</a>
+  </span>
+  <br>
+  
+  Image Credits:
+  <ul>
+    <li>
+      <i>"cheese.png"</i> image by 
+      <a href="https://pixabay.com/users/mostafaelturkey36-13328910/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4946581">
+        Mostafa Elturkey
+      </a> from 
+      <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4946581">
+        Pixabay
+      </a>
+    </li>
+    <li>
+      <i>"computerMouse.png"</i> image by 
+      <a href="https://pixabay.com/users/openclipart-vectors-30363/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=152162">
+        OpenClipart-Vectors
+      </a> from 
+      <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=152162">
+        Pixabay
+      </a>
+    </li>
+    <li>
+      <i>"greenArrow.png"</i> image by 
+      <a href="https://pixabay.com/users/dionhva-5337220/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2304007">
+        dionhva
+      </a> from 
+      <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2304007">
+        Pixabay
+      </a>
+    </li>
+  </ul>
+</footer>
+
+</html>
