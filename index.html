@@ -1,9 +1,7 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en-ca" oncontextmenu="return false">
 <head>
-  <title>Joseph Says</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="images/speechBubble.png">
+  <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -12,29 +10,29 @@
     <h1 class="alteredTitle">💬 Joseph Says</h1>
     <h3>
       A game where following instructions is the only advice you'll
-      need
+      need.
     </h3>
     <input
+      class="textInput onTopOfAnother"
       id="playerName"
       onchange="updatePlayButtonText()"
       placeholder="What's your name?"
-      type="text"
-      class="textInput onTopOfAnother">
+      type="text">
     <button
-      id="playButton"
       class="onTopOfAnother"
+      id="playButton"
       onclick="hideAndShow('welcomeScreen', 'gameOverview'); document.getElementById('webpageInfo').hidden = true">
       Let's Play!
     </button>
   </div>
 
-  <div class="landingContent" id="gameOverview" hidden>
+  <div class="landingContent" hidden id="gameOverview">
     <h1>Before We Start</h1>
     <h2 class="descriptionText" id="introductionText">You might be thinking that this is just a spin-off of Simon Says...</h2>
     <div class="sideBySide">
       <button
-        id="noChoiceButContinue"
-        class="invertedButtonScheme" hidden
+        class="invertedButtonScheme"
+        hidden id="noChoiceButContinue"
         onclick="initializeGetReadyCountdown()">
         I guess I have no choice...
       </button>
@@ -47,17 +45,17 @@
     
   </div>
 
-  <div class="landingContent" id="getReadyCountdown" hidden>
+  <div class="landingContent" hidden id="getReadyCountdown">
     <h1 id="getReadyText">Get Ready in</h1>
     <h1
       class="alteredTitle"
-      style="font-size: 4em"
-      id="getReadyCounter">
+      id="getReadyCounter"
+      style="font-size: 4em">
       4
     </h1>
   </div>
 
-  <div id="mainGameplay" hidden>
+  <div hidden id="mainGameplay">
     <h2 id="remainingTimeText">Time left (seconds): 35</h2>
     <h1 id="josephSaysTitle">Joseph Says... </h1>
     <div class="landingContent" id="selectNumFromRange">
@@ -65,8 +63,8 @@
       <input
         class="numericalInputs onTopOfAnother"
         id="fromOneToTenInput"
-        type="number"
-        min="1" readonly>
+        min="1"
+        readonly type="number">
       <div class="sideBySide">
         <button
           class="onTopOfAnother invertedButtonScheme"
@@ -74,8 +72,8 @@
           Increase
         </button>
         <button
-          id="nextForSelectNumFromRange"
           class="onTopOfAnother"
+          id="nextForSelectNumFromRange"
           onclick="determineNextTaskFromRange()">
           Next
         </button>
@@ -85,35 +83,35 @@
 
     <!-- Shown when the player selects a number less than or
       equal to 2 from out of 10 -->
-    <div class="landingContent" id="mouseToCheese" hidden>
+    <div class="landingContent" hidden id="mouseToCheese">
       <h2>Use the <u>bar</u> below to move the mouse to its cheese</h2>
       <div class="sideBySide">
         <img id="computerMouseGraphic" src="images/computerMouse.png">
         <img
-          style="margin-left: 783px; margin-top: 15px"
           id="cheeseForMouse"
-          src="images/cheese.png">
+          src="images/cheese.png"
+          style="margin-left: 783px; margin-top: 15px">
       </div>
 
       <input
-        onchange="modifyComputerMousePosition()"
-        value="0"
-        max="650"
         class="onTopOfAnother"
         id="moveMouseBar"
-        type="range">
+        max="650"
+        onchange="modifyComputerMousePosition()"
+        type="range"
+        value="0">
     </div>
 
     <!-- Shown when the player selects a number less than or
       equal to 4 from out of 10 -->
-    <div class="landingContent" id="solveMathProblem" hidden>
+    <div class="landingContent" hidden id="solveMathProblem">
       <h2>Enter the number <u>12</u> in the <u>Input</u> below</h2>
         <h1 style="font-size: 75px">
           3(<input
-          onchange="checkMathProblemAnswer()"
-          style="margin-left: 10px"
           class="numericalInputs"
           id="playerInputMathProblem"
+          onchange="checkMathProblemAnswer()"
+          style="margin-left: 10px"
           type="number"
           value="0">)
            + 1 = 37
@@ -123,7 +121,7 @@
 
     <!-- Shown when the player selects a number less than or
       equal to 6 from out of 10 -->
-    <div class="landingContent" id="landOnMiddle" hidden>
+    <div class="landingContent" hidden id="landOnMiddle">
       <h2>Press the <u>Stop</u> button when the green arrow reaches the middle</h2>
       <img id="greenArrow" src="images/greenArrow.png">
       <table style="width: 100%; margin-bottom: 20px">
@@ -136,8 +134,8 @@
         </tr>
       </table>
       <button
-          id="stopGreenArrowMove"
           class="onTopOfAnother"
+          id="stopGreenArrowMove"
           onclick="checkIfArrowOnMiddle()">
           Stop
       </button>
@@ -145,7 +143,7 @@
     
     <!-- Shown when the player selects a number less than or
       equal to 8 from out of 10 -->
-    <div class="landingContent" id="formImageFromButtons" hidden>
+    <div class="landingContent" hidden id="formImageFromButtons">
       <h2>Toggle all the buttons filled with <u>Orange</u> to create the image</h2>
       
       <div class="sideBySide">
@@ -155,32 +153,32 @@
           <tr>
             <td>
               <button
-                id="formImage1x1"
                 class="formImageButton"
+                id="formImage1x1"
                 onclick="toggleFormImageButtonStyle('formImage1x1')"></button>
               <button
-                id="formImage1x2"
                 class="formImageButton"
+                id="formImage1x2"
                 onclick="toggleFormImageButtonStyle('formImage1x2')"></button>
               <button
-                id="formImage1x3"
                 class="formImageButton"
+                id="formImage1x3"
                 onclick="toggleFormImageButtonStyle('formImage1x3')"></button>
               <button
-                id="formImage1x4"
                 class="formImageButton"
+                id="formImage1x4"
                 onclick="toggleFormImageButtonStyle('formImage1x4')"></button>
               <button
-                id="formImage1x5"
                 class="formImageButton"
+                id="formImage1x5"
                 onclick="toggleFormImageButtonStyle('formImage1x5')"></button>
               <button
-                id="formImage1x6"
                 class="formImageButton"
+                id="formImage1x6"
                 onclick="toggleFormImageButtonStyle('formImage1x6')"></button>
               <button
-                id="formImage1x7"
                 class="formImageButton"
+                id="formImage1x7"
                 onclick="toggleFormImageButtonStyle('formImage1x7')"></button>
             </td>
           </tr>
@@ -188,32 +186,32 @@
           <tr>
             <td>
               <button
-                id="formImage2x1"
                 class="formImageButton"
+                id="formImage2x1"
                 onclick="toggleFormImageButtonStyle('formImage2x1')"></button>
               <button
-                id="formImage2x2"
                 class="formImageButtonFilled"
+                id="formImage2x2"
                 onclick="toggleFormImageButtonStyle('formImage2x2'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage2x3"
                 class="formImageButton"
+                id="formImage2x3"
                 onclick="toggleFormImageButtonStyle('formImage2x3')"></button>
               <button
-                id="formImage2x4"
                 class="formImageButton"
+                id="formImage2x4"
                 onclick="toggleFormImageButtonStyle('formImage2x4')"></button>
               <button
-                id="formImage2x5"
                 class="formImageButton"
+                id="formImage2x5"
                 onclick="toggleFormImageButtonStyle('formImage2x5')"></button>
               <button
-                id="formImage2x6"
                 class="formImageButtonFilled"
+                id="formImage2x6"
                 onclick="toggleFormImageButtonStyle('formImage2x6'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage2x7"
                 class="formImageButton"
+                id="formImage2x7"
                 onclick="toggleFormImageButtonStyle('formImage2x7')"></button>
             </td>
           </tr>
@@ -221,32 +219,32 @@
           <tr>
             <td>
               <button
-                id="formImage3x1"
                 class="formImageButton"
+                id="formImage3x1"
                 onclick="toggleFormImageButtonStyle('formImage3x1')"></button>
               <button
-                id="formImage3x2"
                 class="formImageButton"
+                id="formImage3x2"
                 onclick="toggleFormImageButtonStyle('formImage3x2')"></button>
               <button
-                id="formImage3x3"
                 class="formImageButtonFilled"
+                id="formImage3x3"
                 onclick="toggleFormImageButtonStyle('formImage3x3'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage3x4"
                 class="formImageButton"
+                id="formImage3x4"
                 onclick="toggleFormImageButtonStyle('formImage3x4')"></button>
               <button
-                id="formImage3x5"
                 class="formImageButtonFilled"
+                id="formImage3x5"
                 onclick="toggleFormImageButtonStyle('formImage3x5'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage3x6"
                 class="formImageButton"
+                id="formImage3x6"
                 onclick="toggleFormImageButtonStyle('formImage3x6')"></button>
               <button
-                id="formImage3x7"
                 class="formImageButton"
+                id="formImage3x7"
                 onclick="toggleFormImageButtonStyle('formImage3x7')"></button>
             </td>
           </tr>
@@ -254,32 +252,32 @@
           <tr>
             <td>
               <button
-                id="formImage4x1"
                 class="formImageButton"
+                id="formImage4x1"
                 onclick="toggleFormImageButtonStyle('formImage4x1')"></button>
               <button
-                id="formImage4x2"
                 class="formImageButton"
+                id="formImage4x2"
                 onclick="toggleFormImageButtonStyle('formImage4x2')"></button>
               <button
-                id="formImage4x3"
                 class="formImageButton"
+                id="formImage4x3"
                 onclick="toggleFormImageButtonStyle('formImage4x3')"></button>
               <button
-                id="formImage4x4"
                 class="formImageButtonFilled"
+                id="formImage4x4"
                 onclick="toggleFormImageButtonStyle('formImage4x4'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage4x5"
                 class="formImageButton"
+                id="formImage4x5"
                 onclick="toggleFormImageButtonStyle('formImage4x5')"></button>
               <button
-                id="formImage4x6"
                 class="formImageButton"
+                id="formImage4x6"
                 onclick="toggleFormImageButtonStyle('formImage4x6')"></button>
               <button
-                id="formImage4x7"
                 class="formImageButton"
+                id="formImage4x7"
                 onclick="toggleFormImageButtonStyle('formImage4x7')"></button>
             </td>
           </tr>
@@ -287,32 +285,32 @@
           <tr>
             <td>
               <button
-                id="formImage5x1"
                 class="formImageButton"
+                id="formImage5x1"
                 onclick="toggleFormImageButtonStyle('formImage5x1')"></button>
               <button
-                id="formImage5x2"
                 class="formImageButton"
+                id="formImage5x2"
                 onclick="toggleFormImageButtonStyle('formImage5x2')"></button>
               <button
-                id="formImage5x3"
                 class="formImageButtonFilled"
+                id="formImage5x3"
                 onclick="toggleFormImageButtonStyle('formImage5x3'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage5x4"
                 class="formImageButton"
+                id="formImage5x4"
                 onclick="toggleFormImageButtonStyle('formImage5x4')"></button>
               <button
-                id="formImage5x5"
                 class="formImageButtonFilled"
+                id="formImage5x5"
                 onclick="toggleFormImageButtonStyle('formImage5x5'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage5x6"
                 class="formImageButton"
+                id="formImage5x6"
                 onclick="toggleFormImageButtonStyle('formImage5x6')"></button>
               <button
-                id="formImage5x7"
                 class="formImageButton"
+                id="formImage5x7"
                 onclick="toggleFormImageButtonStyle('formImage5x7')"></button>
             </td>
           </tr>
@@ -320,32 +318,32 @@
           <tr>
             <td>
               <button
-                id="formImage6x1"
                 class="formImageButton"
+                id="formImage6x1"
                 onclick="toggleFormImageButtonStyle('formImage6x1')"></button>
               <button
-                id="formImage6x2"
                 class="formImageButtonFilled"
+                id="formImage6x2"
                 onclick="toggleFormImageButtonStyle('formImage6x2'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage6x3"
                 class="formImageButton"
+                id="formImage6x3"
                 onclick="toggleFormImageButtonStyle('formImage6x3')"></button>
               <button
-                id="formImage6x4"
                 class="formImageButton"
+                id="formImage6x4"
                 onclick="toggleFormImageButtonStyle('formImage6x4')"></button>
               <button
-                id="formImage6x5"
                 class="formImageButton"
+                id="formImage6x5"
                 onclick="toggleFormImageButtonStyle('formImage6x5')"></button>
               <button
-                id="formImage6x6"
                 class="formImageButtonFilled"
+                id="formImage6x6"
                 onclick="toggleFormImageButtonStyle('formImage6x6'); formImageFromButtonsClickCount++"></button>
               <button
-                id="formImage6x7"
                 class="formImageButton"
+                id="formImage6x7"
                 onclick="toggleFormImageButtonStyle('formImage6x7')"></button>
             </td>
           </tr>
@@ -353,41 +351,41 @@
           <tr>
             <td>
               <button
-                id="formImage7x1"
                 class="formImageButton"
+                id="formImage7x1"
                 onclick="toggleFormImageButtonStyle('formImage7x1')"></button>
               <button
-                id="formImage7x2"
                 class="formImageButton"
+                id="formImage7x2"
                 onclick="toggleFormImageButtonStyle('formImage7x2')"></button>
               <button
-                id="formImage7x3"
                 class="formImageButton"
+                id="formImage7x3"
                 onclick="toggleFormImageButtonStyle('formImage7x3')"></button>
               <button
-                id="formImage7x4"
                 class="formImageButton"
+                id="formImage7x4"
                 onclick="toggleFormImageButtonStyle('formImage7x4')"></button>
               <button
-                id="formImage7x5"
                 class="formImageButton"
+                id="formImage7x5"
                 onclick="toggleFormImageButtonStyle('formImage7x5')"></button>
               <button
-                id="formImage7x6"
                 class="formImageButton"
+                id="formImage7x6"
                 onclick="toggleFormImageButtonStyle('formImage7x6')"></button>
               <button
-                id="formImage7x7"
                 class="formImageButton"
+                id="formImage7x7"
                 onclick="toggleFormImageButtonStyle('formImage7x7')"></button>
             </td>
           </tr>
         </table>
         <button
-          style="margin-top: Auto; margin-bottom: Auto"
           class="onTopOfAnother"
-          type="button"
-          onclick="verifyImageIsFormed()">
+          onclick="verifyImageIsFormed()"
+          style="margin-top: Auto; margin-bottom: Auto"
+          type="button">
           Check
         </button>
       </div>
@@ -396,7 +394,7 @@
 
   </div>
 
-  <div class="landingContent" id="gameSuccessScreen" hidden>
+  <div class="landingContent" hidden id="gameSuccessScreen">
     <h1>Hooray!</h1>
     <h1 class="alteredTitle" id="youWonText">You Made it [playerName]!</h1>
     <h3 id="timeTakenForTasks">You went through all the tasks in [seconds]</h3>
@@ -405,10 +403,13 @@
       onclick="location.reload()">
       Play Again?
     </button>
+    <br>
+    <h3>Previous Times | <a onclick="localStorage.clear(); document.getElementById('previousTimesDisplay').innerHTML = 'None'" style="cursor: pointer">Clear</a></h3>
+    <h3 id="previousTimesDisplay" style="font-weight: normal"></h3>
 
   </div>
 
-  <div class="landingContent" id="gameOverScreen" hidden>
+  <div hidden class="landingContent" id="gameOverScreen">
     <h1>Oh no</h1>
     <h1 class="alteredTitle" id="youLostText">Game Over [playerName]!</h1>
     <h3>You ran out of time!</h3>
@@ -426,53 +427,9 @@
 </body>
 
 <footer id="webpageInfo">
-  <table style="width: 100%">
-    <tr>
-      <td>
-        Designed and Developed by 
-        <span style="font-family: Sans-Serif; font-size: 12px; font-weight: Bold;">
-          JMag | <a href="https://github.com/j-m-a-g">@j-m-a-g</a>
-        </span>
-        <br>
-        
-        Image Credits:
-        <ul>
-          <li>
-            <i>"cheese.png"</i> from 
-            <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4946581">
-              Pixabay
-            </a>
-          </li>
-          <li>
-            <i>"computerMouse.png"</i> from 
-            <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=152162">
-              Pixabay
-            </a>
-          </li>
-          <li>
-            <i>"greenArrow.png"</i> from 
-            <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2304007">
-              Pixabay
-            </a>
-          </li>
-        </ul>
-      </td>
-      <td>
-        <div style="justify-items: center">
-          <h3>Now available on the Microsoft Store!</h3>
-          <script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
-          <ms-store-badge
-            productid="9PF227CW6RVG"
-            window-mode="full"
-            theme="auto"
-            size="large"
-            language="en-ca"
-            animation="on">
-          </ms-store-badge>
-        </div>
-      </td>
-    </tr>
-  </table>
+  Images from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4946581" target="_blank">
+    Pixabay
+  </a>
 </footer>
 
 </html>

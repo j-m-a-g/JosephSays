@@ -30,12 +30,13 @@ let formImageFromButtons = document.getElementById("formImageFromButtons");
 let youWonText = document.getElementById("youWonText");
 let timeTakenForTasks = document.getElementById("timeTakenForTasks");
 let gameOverScreen = document.getElementById("gameOverScreen");
+let previousTimesDisplay = document.getElementById("previousTimesDisplay");
 
 // NORMAL VARIABLES
-let gameTotalTime = 35; // 5-second buffer to account for the, "Get Ready," countdown
+let gameTotalTime = 25; // 5-second buffer to account for the, "Get Ready," countdown
 let secondPhrase = "And you'd be right!";
 let thirdPhrase = "The twist? There aren't any tricks!<br>(For example, not specifically saying \"Joseph Says\" to complete a task)";
-let fourthPhrase = "But, you only have <span style=\"font-family: Monospace; font-size: 1.2em\">30 SECONDS</span> to get through the tasks!"
+let fourthPhrase = "But, you only have <span style=\"font-family: monospace; font-size: 1.2em\">20 SECONDS</span> to get through the tasks!"
 let fontScale = undefined;
 let tasksDone = [];
 let formImageFromButtonsClickCount = 0;
@@ -44,7 +45,7 @@ let formImageFromButtonsClickCount = 0;
 // or one with a space at the beginning or end, resulting in an
 // incorrect appearance for a displayed message
 function checkForWhitespace(textObject, appliedTo, messagePrefix) {
-  if (textObject.value == "" || textObject.vale == " ") {
+  if (textObject.value === "" || textObject.value === " ") {
     appliedTo.innerHTML = messagePrefix + "!";
   }
   else {
@@ -74,22 +75,22 @@ function initializeGetReadyCountdown() {
 function flipThroughIntro() {
   // Sequentially cycles through a brief explanation of the game
   // each time the, "Continue," button is clicked
-  if (introductionText.innerHTML == "You might be thinking that this is just a spin-off of Simon Says...") {
+  if (introductionText.innerHTML === "You might be thinking that this is just a spin-off of Simon Says...") {
     introductionText.innerHTML = secondPhrase;
   }
-  else if (introductionText.innerHTML == secondPhrase) {
+  else if (introductionText.innerHTML === secondPhrase) {
     introductionText.innerHTML = thirdPhrase;
   }
-  else if (introductionText.innerHTML == thirdPhrase) {
+  else if (introductionText.innerHTML === thirdPhrase) {
     introductionText.innerHTML = fourthPhrase;
   }
-  else if (introductionText.innerHTML == fourthPhrase) {
+  else if (introductionText.innerHTML === fourthPhrase) {
     introductionText.innerHTML = "So, you up for the challenge?";
     continueToPlay.innerHTML = "Yes!";
 
     noChoiceButContinue.hidden = false;
   }
-  else if (continueToPlay.innerHTML == "Yes!") {
+  else if (continueToPlay.innerHTML === "Yes!") {
     // The button's text turns to, "Yes," at the end of the introduction
     // to then initialize the game when clicked (after the quick, "Get
     // Ready," countdown)
@@ -121,7 +122,7 @@ function updateRemainingTimeCounter(allottedTime) {
   }
   else if (allottedTime <= 6) {
     fontScale = 40 - allottedTime * 2;
-    remainingTimeText.style = "font-size: " + fontScale + "px; color: Yellow";
+    remainingTimeText.style = "font-size: " + fontScale + "px; color: yellow";
 
     allottedTime--;
     remainingTimeText.innerHTML = "Time left (seconds): " + allottedTime;
@@ -142,7 +143,7 @@ function getComponentsReady() {
   // is generated to allow at least 1 increment)
   fromOneToTenInput.value = Math.floor(Math.random() * 10);
 
-  if (fromOneToTenInput.value == 0) {
+  if (fromOneToTenInput.value === 0) {
     getComponentsReady();
   }
 
@@ -156,18 +157,23 @@ function getComponentsReady() {
 function determineNextTaskFromRange() {
   if (fromOneToTenInput.value <= 2) {
     hideAndShow("selectNumFromRange", "mouseToCheese");
+    tasksDone.push("mouseToCheese");
   }
   else if (fromOneToTenInput.value <= 4) {
     hideAndShow("selectNumFromRange", "solveMathProblem");
+    tasksDone.push("solveMathProblem");
   }
   else if (fromOneToTenInput.value <= 6) {
     hideAndShow("selectNumFromRange", "landOnMiddle");
+    tasksDone.push("landOnMiddle");
   }
   else if (fromOneToTenInput.value <= 8) {
     hideAndShow("selectNumFromRange", "formImageFromButtons");
+    tasksDone.push("formImageFromButtons");
   }
   else {
     hideAndShow("selectNumFromRange", "mouseToCheese");
+    tasksDone.push("mouseToCheese");
   }
 }
 
@@ -239,7 +245,7 @@ function modifyComputerMousePosition() {
 
   // Checks if the player has fully dragged the range's head
   // to the end of the bar and moves them on to the next task
-  if (moveMouseBar.value == 650) {
+  if (moveMouseBar.value === "650") {
     cheeseForMouse.hidden = true;
     setTimeout(() => {
       mouseToCheese.hidden = true;
@@ -254,7 +260,7 @@ function modifyComputerMousePosition() {
 }
 
 function checkMathProblemAnswer() {
-  if (playerInputMathProblem.value == 12) {
+  if (playerInputMathProblem.value === "12") {
     solveMathProblem.hidden = true;
     randomizeNextTask();
     playerInputMathProblem.value = 0;
@@ -263,7 +269,7 @@ function checkMathProblemAnswer() {
 
 function shiftGreenArrowPosition(arrowLeftMargin) {
   if (arrowLeftMargin <= 0) {
-    greenArrow.style = "margin-left: 0px";
+    greenArrow.style.marginLeft = "0";
     shiftGreenArrowPosition(950);
   }
   else {
@@ -274,7 +280,7 @@ function shiftGreenArrowPosition(arrowLeftMargin) {
 }
 
 function checkIfArrowOnMiddle() {
-  greenArrowMarginAsNum = Number(greenArrow.style.marginLeft.substring(0, 3));
+  let greenArrowMarginAsNum = Number(greenArrow.style.marginLeft.substring(0, 3));
 
   if (greenArrowMarginAsNum <= 225 || greenArrowMarginAsNum >= 170) {
     landOnMiddle.hidden = true;
@@ -285,8 +291,8 @@ function checkIfArrowOnMiddle() {
 // Indicates to the player which buttons they have selected
 // for the, "Forming An Image From Buttons," task
 function toggleFormImageButtonStyle(buttonToApplyStyle) {
-  currentButton = document.getElementById(buttonToApplyStyle);
-  currentButton.style = "background-color: Yellow"
+  let currentButton = document.getElementById(buttonToApplyStyle);
+  currentButton.style.backgroundColor = "yellow"
 }
 
 function verifyImageIsFormed() {
@@ -296,26 +302,23 @@ function verifyImageIsFormed() {
   }
 }
 
-function determineIfToShowSuccess() {
-  if (
-    tasksDone.includes("mouseToCheese") &&
-    tasksDone.includes("solveMathProblem") &&
-    tasksDone.includes("landOnMiddle") &&
-    tasksDone.includes("formImageFromButtons")
-  ) {
-    allTasksCompleted = true;
-  }
-}
-
 function displaySuccessScreen() {
-  secondsLeft = Number(remainingTimeText.innerHTML.substring(21));
-  calculatedTimeTaken = 30 - secondsLeft;
+  let secondsLeft = Number(remainingTimeText.innerHTML.substring(21));
+  let calculatedTimeTaken = (gameTotalTime - 5) - secondsLeft;
 
   hideAndShow("mainGameplay", "gameSuccessScreen");
   checkForWhitespace(playerName, youWonText, "You Made it");
-  timeTakenForTasks.innerHTML = "You went through all the tasks in <span style=\"font-family: Monospace; font-size: 1.2em\">" + calculatedTimeTaken + " seconds</span>";
+  timeTakenForTasks.innerHTML = "You went through all the tasks in <span style=\"font-family: monospace; font-size: 1.2em\">" + calculatedTimeTaken + " seconds</span>";
 
-  hidingDelay = secondsLeft + 1;
+  if (localStorage.getItem("previousTimes") === null) {
+    previousTimesDisplay.innerHTML = "None";
+  }
+  else {
+    previousTimesDisplay.innerHTML = localStorage.getItem("previousTimes");
+  }
+  localStorage.setItem("previousTimes", localStorage.getItem("previousTimes") + calculatedTimeTaken + " s, ");
+
+  let hidingDelay = secondsLeft + 1;
 
   // Ensures that the, "Game Over" screen does not arbitrarily appear
   // despite the updateRemainingTimeCounter function contradicting this

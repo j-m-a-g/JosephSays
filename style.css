@@ -1,40 +1,40 @@
 body {
-  font-family: Sans-Serif;
-  background-color: Crimson;
-  color: White;
+  font-family: sans-serif;
+  background-color: crimson;
+  color: white;
 }
 
 footer {
   margin-top: 25px;
-  font-family: Monospace;
+  font-family: monospace;
 }
 
 a {
-  color: Orange;
+  color: orange;
 }
 
 h1 {
-  text-align: Center;
-  font-family: Monospace;
+  text-align: center;
+  font-family: monospace;
   font-size: 3em;
 }
 
 h2,
 h3 {
-  text-align: Center;
+  text-align: center;
 }
 
 button {
-  font-family: Monospace;
-  font-weight: Bold;
-  color: White;
-  border-style: Solid;
-  background-color: OrangeRed;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  border-style: solid;
+  background-color: orangered;
   border-radius: 10px;
   padding: 20px;
-  margin-left: Auto;
-  margin-right: Auto;
-  box-shadow: 5px 5px Black;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 5px 5px black;
 }
 button:Hover {
   animation-name: buttonBackgroundFade;
@@ -43,14 +43,14 @@ button:Hover {
 }
 
 input {
-  margin-left: Auto;
-  margin-right: Auto;
-  text-align: Center;
-  color: White;
-  border-style: Solid;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+  border-style: solid;
   border-width: 2px;
-  border-color: White;
-  background-color: Crimson;
+  border-color: white;
+  background-color: crimson;
   border-radius: 10px;
   margin-bottom: 20px;
 }
@@ -60,12 +60,12 @@ input:Hover {
   animation-fill-mode: forwards;
 }
 input:Focus {
-  background-color: OrangeRed;
+  background-color: orangered;
 }
 input::Placeholder {
-  text-align: Center;
-  font-family: Monospace;
-  color: White;
+  text-align: center;
+  font-family: monospace;
+  color: white;
 }
 
 img {
@@ -75,21 +75,21 @@ img {
 
 hr {
   border-width: 3px;
-  border-style: Solid;
-  border-color: White;
+  border-style: solid;
+  border-color: white;
 }
 
 .invertedButtonScheme {
-  font-family: Monospace;
-  font-weight: Bold;
-  color: White;
-  border-style: Solid;
-  background-color: Black;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  border-style: solid;
+  background-color: black;
   border-radius: 10px;
   padding: 20px;
-  margin-left: Auto;
-  margin-right: Auto;
-  box-shadow: 5px 5px OrangeRed;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 5px 5px orangered;
 }
 
 .landingContent {
@@ -97,29 +97,29 @@ hr {
 }
 
 .alteredTitle {
-  text-shadow: 5px 5px Black;
+  text-shadow: 5px 5px black;
   margin-top: -10px;
-  text-align: Center;
+  text-align: center;
   margin-left: 20px;
-  font-family: Sans-Serif;
+  font-family: sans-serif;
   animation-name: swivelAnimation;
   animation-duration: 4s;
-  transform: Rotate(-5deg);
+  transform: rotate(-5deg);
 }
 
 .textInput {
   width: 25%;
   padding: 20px;
-  margin-left: Auto;
-  margin-right: Auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .onTopOfAnother {
-  display: Block;
+  display: block;
 }
 
 .sideBySide {
-  display: Flex;
+  display: flex;
 }
 
 .descriptionText {
@@ -135,34 +135,33 @@ hr {
 }
 
 .formImageButton {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 0;
+  margin-right: 0;
   width: 50px;
   height: 50px;
-  background-color: White;
-  border-style: None;
-  border-radius: 0px;
+  background-color: white;
+  border-style: none;
+  border-radius: 0;
   box-shadow: None;
 }
 .formImageButton:Hover {
-  background-color: Yellow;
-  animation: None;
+  background-color: yellow;
+  animation: none;
 }
 
 .formImageButtonFilled {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 0;
+  margin-right: 0;
   width: 50px;
   height: 50px;
   background-color: Orange;
-  border-style: Solid;
-  border-radius: 0px;
-  border-style: None;
+  border-radius: 0;
+  border-style: none;
   box-shadow: None;
 }
 .formImageButtonFilled:Hover {
-  background-color: Yellow;
-  animation: None;
+  background-color: yellow;
+  animation: none;
 }
 
 #introductionText {
@@ -170,8 +169,8 @@ hr {
 }
 
 #remainingTimeText {
-  font-family: Monospace;
-  text-align: Left;
+  font-family: monospace;
+  text-align: left;
 }
 
 #moveMouseBar {
@@ -186,7 +185,7 @@ hr {
 
 #greenArrow {
   margin-left: 900px;
-  transform: Rotate(90deg);
+  transform: rotate(90deg);
   width: 50px;
   height: 50px;
 }
@@ -198,31 +197,31 @@ hr {
 /* Swivels the landing title on the page */
 @keyframes swivelAnimation {
   0% {
-    transform: Rotate(-5deg);
+    transform: rotate(-5deg);
   }
   25% {
-    transform: Rotate(5deg);
+    transform: rotate(5deg);
   }
   50% {
-    transform: Rotate(-5deg);
+    transform: rotate(-5deg);
   }
   75% {
-    transform: Rotate(5deg);
+    transform: rotate(5deg);
   }
   100% {
-    transform: Rotate(-5deg);
+    transform: rotate(-5deg);
   }
 }
 
 @keyframes buttonBackgroundFade {
   to {
-    color: Black;
-    background-color: Orange;
+    color: black;
+    background-color: orange;
   }
 }
 
 @keyframes inputHoverFade {
   to {
-    background-color: OrangeRed;
+    background-color: orangered;
   }
 }
